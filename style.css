@@ -1,0 +1,267 @@
+/* ===== GRUNDEINSTELLUNGEN & VARIABLEN ===== */
+:root {
+    /* Dark Mode Farben (Standard) */
+    --bg-color: #0D1B2A; /* Dunkelblau */
+    --text-color: #E0E1DD; /* Helles Grau */
+    --primary-color: #41EAD4; /* Technisches Grün/Cyan */
+    --card-bg-color: #1B263B;
+    --header-bg-color: rgba(27, 38, 59, 0.8);
+    --border-color: #415A77;
+}
+
+body.light-mode {
+    /* Light Mode Farben */
+    --bg-color: #F8F9FA;
+    --text-color: #212529;
+    --primary-color: #007BFF; /* Technisches Blau */
+    --card-bg-color: #FFFFFF;
+    --header-bg-color: rgba(255, 255, 255, 0.8);
+    --border-color: #DEE2E6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2rem; }
+h3 { font-size: 1.2rem; margin-bottom: 0; } /* margin-bottom entfernt für Akkordeon */
+
+/* ===== HEADER & NAVIGATION ===== */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--header-bg-color);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+.theme-button {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-button:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 80px; /* Header-Höhe */
+    background: var(--bg-color);
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+.hero-image {
+    flex: 1;
+}
+
+/* ===== CONTENT SECTIONS ===== */
+.content-section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* ===== CARD GRID (BACHELOR/MASTER) ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== NEU: ACCORDION STYLES ===== */
+.accordion .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.accordion .accordion-header::after {
+    content: '+';
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--primary-color);
+    transition: transform 0.3s;
+}
+
+.accordion.active .accordion-header::after {
+    content: '−';
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.accordion-content p {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 1rem;
+}
+
+/* ===== RESEARCH SECTION ===== */
+.research-container {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.research-text { flex: 1; }
+.research-image { flex: 1; border-radius: 8px; overflow: hidden; }
+
+/* ===== INFO GRID (KONTAKT) ===== */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.info-item {
+    background-color: var(--card-bg-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    padding: 2rem 0;
+    background-color: var(--card-bg-color);
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .header-container { flex-direction: column; gap: 1rem; }
+    nav ul { justify-content: center; flex-wrap: wrap; }
+    
+    .hero { flex-direction: column; text-align: center; min-height: auto; padding: 100px 0 4rem 0; }
+    .hero-content { padding-right: 0; margin-bottom: 2rem; }
+    
+    .research-container { flex-direction: column; }
+}
